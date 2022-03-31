@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.5.2",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
@@ -21,10 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.ts",
-    "lint-fix": "eslint src/**/*.ts --fix",
-    "lint-tsx": "eslint src/**/*.tsx",
-    "lint-tsx-fix": "eslint src/**/*.tsx --fix"
+    "lint": "eslint src/**/*.ts*",
+    "lint-fix": "eslint src/**/*.ts* --fix"
   },
   "eslintConfig": {
     "extends": [
