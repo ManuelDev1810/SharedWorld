@@ -2,23 +2,31 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";  
+import Typography from "@mui/material/Typography";
+import { Company, Address } from "./../../types/User";  
 
-const User: React.FC = () => {
+interface Props {
+    name: string;
+    email: string;
+    company: Company;
+    address: Address;
+}
+
+const User: React.FC<Props> = (props) => {
     return (
         <>
             <Card sx={{ minWidth: 275, width: 800, margin: "auto", marginTop: 2, background: "#c1cad6" }}>
                 <CardContent>
                     <Typography variant="h5" component="div">
-                    Leanne Graham
+                        {props.name}
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    Email: Sincere@april.biz
+                    Email: {props.email}
                     </Typography>
                     <Typography variant="body2">
-                    Company: Romaguera-Crona
+                    Company: {props.company.name}
                         <br />
-                        {"\"Catch Phrase: Multi-layered client-server neural-net\""}
+                    Catch Phrase: {props.company.catchPhrase}
                     </Typography>
                 </CardContent>
                 <CardActions>
