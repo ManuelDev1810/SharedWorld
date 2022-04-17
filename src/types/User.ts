@@ -17,7 +17,7 @@ export interface Address {
     geo: Geo;
 }
 
-interface Geo {
+export interface Geo {
     lat: string;
     lng: number;
 }

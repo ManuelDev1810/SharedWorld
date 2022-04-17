@@ -15,7 +15,7 @@ interface Props {
 const User: React.FC<Props> = (props) => {
     return (
         <>
-            <Card sx={{ minWidth: 275, width: 800, margin: "auto", marginTop: 2, background: "#c1cad6" }}>
+            <Card sx={{ marginTop: 2, background: "#c1cad6" }}>
                 <CardContent>
                     <Typography variant="h5" component="div">
                         {props.name}
