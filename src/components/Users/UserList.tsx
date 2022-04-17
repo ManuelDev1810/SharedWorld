@@ -1,10 +1,11 @@
-import User from "./User";
+import UserItem from "./UserItem";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useEffect } from "react";
 import { getUsers } from "../../reducers/users";
+import { User as UserType } from "../../types/User";
 import usePagination from "../../hooks/usePagination";
 
-const Users = (): JSX.Element => {
+const UserList = (): JSX.Element => {
     const users = useAppSelector((state) => state.users.list);
     const dispatch = useAppDispatch();
     const { items, pagination } = usePagination({
@@ -18,9 +19,9 @@ const Users = (): JSX.Element => {
 
     return (
         <>
-            {items!.map((user) => {
+            {items!.map((user: UserType) => {
                 return (
-                    <User
+                    <UserItem
                         key={user.id}
                         name={user.name}
                         email={user.email}
@@ -34,4 +35,4 @@ const Users = (): JSX.Element => {
     );
 };
 
-export default Users;
+export default UserList;

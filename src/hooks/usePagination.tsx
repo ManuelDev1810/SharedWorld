@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useMemo, useReducer } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { User } from "../types/User";
+import { PaginationState } from "../types/Pagination/PaginationState";
+import {ConfigurationPaginationType} from "../types/Pagination/ConfigurationPaginationType";
+import { PaginationActionKind } from "../types/Pagination/PaginationAction";
+import { paginationReducer } from "../utils/Pagination/UserListPagination/PaginationReducer";
 
-const initialConfiguration: ConfigurationType = {
+const initialConfiguration: ConfigurationPaginationType = {
     items: [],
     itemsPerPage: 5,
 };
@@ -14,50 +17,8 @@ const initialState: PaginationState = {
     numbersOfPages: 1,
 };
 
-enum PaginationActionKind {
-  CONFIGURE_PAGINATION = "CONFIGURE_PAGINATION",
-  CHANGE_PAGE = "CHANGE-PAGE",
-}
-
-interface PaginationAction {
-  type: PaginationActionKind;
-  payload: PaginationState;
-}
-
-interface PaginationState {
-  currentPage?: number;
-  items?: User[];
-  numbersOfPages?: number;
-}
-
-function paginationReducer(
-    prevState: PaginationState,
-    action: PaginationAction
-) {
-    switch (action.type) {
-    case PaginationActionKind.CONFIGURE_PAGINATION:
-        return {
-            ...prevState,
-            items: action.payload.items,
-            numbersOfPages: action.payload.numbersOfPages,
-        };
-    case PaginationActionKind.CHANGE_PAGE:
-        return {
-            ...prevState,
-            currentPage: action.payload.currentPage,
-        };
-    default:
-        return { ...prevState };
-    }
-}
-
-interface ConfigurationType {
-  items: User[];
-  itemsPerPage: number;
-}
-
 const usePagination = (
-    configuration: ConfigurationType = initialConfiguration
+    configuration: ConfigurationPaginationType = initialConfiguration
 ) => {
     const [paginationState, dispatch] = useReducer(
         paginationReducer,
@@ -95,6 +56,7 @@ const usePagination = (
         });
     }, [numbersOfPages, itemsPerPage]);
 
+    //Change page
     const changePage = useCallback((event: React.ChangeEvent<unknown>, value: number) => {
         dispatch({
             type: PaginationActionKind.CHANGE_PAGE,
@@ -102,6 +64,7 @@ const usePagination = (
         });
     }, []);
 
+    //Pagination
     const pagination = () => {
         return (
             <Stack spacing={2}>
