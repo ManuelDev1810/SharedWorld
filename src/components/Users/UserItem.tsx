@@ -3,7 +3,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Company, Address } from "./../../types/User";  
+import { Company, Address } from "../../types/User";  
 
 interface Props {
     name: string;
@@ -12,10 +12,10 @@ interface Props {
     address: Address;
 }
 
-const User: React.FC<Props> = (props) => {
+const UserItem: React.FC<Props> = (props) => {
     return (
         <>
-            <Card sx={{ minWidth: 275, width: 800, margin: "auto", marginTop: 2, background: "#c1cad6" }}>
+            <Card sx={{ marginTop: 2, background: "#c1cad6" }}>
                 <CardContent>
                     <Typography variant="h5" component="div">
                         {props.name}
@@ -37,4 +37,4 @@ const User: React.FC<Props> = (props) => {
     );
 };
 
-export default User;
+export default UserItem;

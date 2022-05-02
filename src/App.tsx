@@ -1,12 +1,15 @@
+import { Box } from "@mui/material";
 import Header from "./components/Header/Header";
-import Users from "./components/Users/Users";
+import UserList from "./components/Users/UserList";
 
 const App: React.FC = () => {
     return (
-        <div>
+        <>
             <Header />
-            <Users />
-        </div>
+            <Box sx={{margin: "auto", minWidth: 275, width: 800,}} >
+                <UserList />
+            </Box>
+        </>
     );
 };
 
