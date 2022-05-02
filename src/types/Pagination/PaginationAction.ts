@@ -1,8 +1,8 @@
 import { PaginationState } from "./PaginationState";
 
-export interface PaginationAction {
+export interface PaginationAction<T> {
     type: PaginationActionKind;
-    payload: PaginationState;
+    payload: PaginationState<T>
   }
  
 export enum PaginationActionKind {

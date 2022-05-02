@@ -1,7 +1,5 @@
-import { User } from "../User";
-
-export interface PaginationState {
+export interface PaginationState<T> {
     currentPage?: number;
-    items?: User[];
+    items?: T[];
     numbersOfPages?: number;
   }
